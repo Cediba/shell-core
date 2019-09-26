@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <script>   
+                clearConsole();
+                console.group("HTML Section");
+                startTimer("pageload-html");  
+         
+                class DebugInfo
+                     {
+                         constructor()
+                         {                                 
+                         this.htmlTime = 0;
+                         this.headTime = 0;
+                         this.bodyTime = 0;     
+                         this.footerTime = 0;                      
+                         }                
+                     }
+         
+                 let debugInfo = new DebugInfo();
+         
+         
+                 function clearConsole()
+                 {
+                     console.clear();
+                     }
+         
+                 function startTimer(group)
+                     {
+                     return console.time(group);
+                     }
+         
+                 function endTimer(group)
+                     {
+                     return console.timeEnd(group);
+                     }                 
+             </script>
+
+    <meta name="keywords" content="HTML, CSS, Javascript">
+    <meta name="application-name" content="shell-core">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Cedric Balmer">
+    <link rel="stylesheet" href="CSS/style.css" type="text/css">
+    
+    <title>social-login</title>
+</head>
+<body>
+    <header></header>
+
+    <nav></nav>
+
+
+</body>
+<footer><p>footer</p></footer>
+
+<script src="Javascript/social-login.js"></script>
+
+<script>
+    debugInfo.htmlTime = endTimer("pageload-html");    
+console.groupEnd("HTML Section");    
+
+    console.group("Debug Information");
+    console.group("Page Information");
+        console.log("Page Loaded: " + location.href + " with parms: " + location.search);                                      
+        console.log("Language: " + navigator.language);
+        console.log("Cookies Enabled: " + navigator.cookieEnabled);
+        console.log("Platform: " + navigator.platform + "(" + navigator.product + ")");
+        console.log(navigator.appCodeName + "(" + navigator.appName + ") " + navigator.appVersion);      
+        console.log("UserAgent: " + navigator.userAgent);
+        console.log("JavaEnabled: " + navigator.javaEnabled());
+        console.log("Is Online: " + navigator.onLine);
+    console.groupEnd("Page Information");
+
+console.group("DOM Information");
+    console.group("DOM - Window Object");
+        console.log(window);
+    console.groupEnd("DOM - Window object");
+
+    console.group("DOM - Document Object");
+        console.log(document);
+    console.groupEnd("DOM - Document Object");
+
+    console.group("DOM - Navigator");
+        console.log(navigator);
+    console.groupEnd("DOM - Navigator");
+console.groupEnd("DOM Information");
+
+console.groupEnd("DebugInformation");
+
+</script>
+</html>

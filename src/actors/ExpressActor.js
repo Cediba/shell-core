@@ -11,6 +11,7 @@ class ExpressActor
 		this.setupExpressRoutes();
 		this.startServer(this.port);
 		this.os = require('os');
+		this.ejs = require('ejs');
 		}
 
 	returnData()
@@ -23,11 +24,11 @@ class ExpressActor
 	setupExpressRoutes()
 		{
 		this.server.use(this.express.static('public'))
-		this.server.get('/api/*', function (req, res) 
-				{
-				console.log("Recieved 'Get' request for resource: " + req.url + " from HOST: " + req.get('host'));
- 				res.send("{hello:world}");
-				})
+		this.server.set('view engine', 'ejs');
+
+		this.server.get("/button/", function(req, res){
+			res.render(`debug/404`, {users: []});
+		})		
 		}
 
 	startServer(port)
